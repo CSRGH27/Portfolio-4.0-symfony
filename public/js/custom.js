@@ -1,17 +1,31 @@
+var modal =  $("#Modal");//your modal 
+
+$(document).on({
+    ajaxStart: function() {
+        modal.find(".modal-content").html("");//empty modal every ajaxstart
+        $('.loading').show();
+        modal.modal("hide");//hide
+
+    },
+    ajaxStop: function() {
+        $('.loading').hide();
+        modal.modal("show");//modal show
+    }
+});
+
+$(document).ready(function () {
+  $('.button').click(function() {
+      var url = Routing.generate( 'project_show', {'id': $(this).attr('id')});
+      $.get(url, function (data) {
+          $(".modal-content").html(data);
+      });
+  });
+});
+
+
+  
 formLoginBar();
 
-
-$('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var id = button.data('title') // Extract info from data-* attributes
-  var content = button.data('content')
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text(id)
-  modal.find('.modal-body').text(content)
-
-})
 
 function formLoginBar() {
   var eventMail = document.querySelector('.mail-event');

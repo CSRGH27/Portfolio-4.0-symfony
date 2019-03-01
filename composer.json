@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/doctrine-fixtures-bundle": "^3.1",
+        "friendsofsymfony/jsrouting-bundle": "^2.3",
         "fzaninotto/faker": "^1.8",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/asset": "4.2.*",
@@ -25,7 +26,8 @@
         "symfony/twig-bundle": "4.2.*",
         "symfony/validator": "4.2.*",
         "symfony/web-link": "4.2.*",
-        "symfony/yaml": "4.2.*"
+        "symfony/yaml": "4.2.*",
+        "friendsofsymfony/jsrouting-bundle": "dev-patch-1"
     },
     "require-dev": {
         "symfony/debug-pack": "*",
@@ -79,4 +81,5 @@
             "require": "4.2.*"
         }
     }
+    
 }

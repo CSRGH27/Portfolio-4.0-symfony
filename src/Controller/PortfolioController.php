@@ -5,6 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ProjectRepository;
+use App\Entity\Project;
+use App\Entity\Language;
+
 
 class PortfolioController extends AbstractController
 {
@@ -31,5 +34,15 @@ class PortfolioController extends AbstractController
             'projects' => $project,
         ]);
         
+    }
+
+    /**
+     *  @Route("portfolio/project/{id}", name="project_show", options={"expose"=true})
+     */
+    public function show(Project $project){
+        return $this->render('portfolio/show.html.twig', [
+            'project' => $project,
+            
+        ]);
     }
 }
