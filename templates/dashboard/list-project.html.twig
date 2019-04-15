@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block title %}List of projects{% endblock %}
+{% block stylesheets %}{% endblock %}
+{% block body %}
+    <div class="grid-ctn">
+        <div class="dash-top-bar">
+            <a href=" {{ path('project') }}">Aller sur mon site</a>
+            <p>Bonjour
+                {{ app.user.name }}</p>
+        </div>
+        <div class="dash-left-bar">
+            <img class="dash-left-bar_img" src="{{ asset('upload/1.png') }}" alt="">
+                <a href="{{ path('list_project') }}" class="dash-left-bar_onglet">
+                    <i class="fas fa-laptop-code"></i>
+                    <p>Projects</p>
+                </a>
+                <a class="dash-left-bar_onglet" href="">
+                    <i class="fas fa-building"></i>
+                    <p>Experiencs Pro</p>
+                </a>
+                <a class="dash-left-bar_onglet" href="">
+                    <i class="fas fa-code"></i>
+                    <p>Skills</p>
+                </a>
+                <a class="dash-left-bar_onglet" href="">
+                    <i class="fas fa-align-left"></i>
+                    <p>About Me</p>
+                </a>
+            </div>
+            
+            
+            
+            
+            <div class="dash-tool">
+                <div class="ctn-dash-list-project">
+                {% for project in projects %}
+                    <div class="dash-list-project">
+                       <div class="dash-list-project-title">{{ project.title }}</div>
+                       <div class="ctn-list-project-icon">
+                            <a href="{{ path('edit_project', {'id': project.id}) }}" class="fas fa-edit dash-list-project-icon"></a>
+                            <a href="#" class="fas fa-trash-alt dash-list-project-icon delete" data-id="{{ project.id }}"></a>
+                       </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block javascripts %}
+        <script src="{{ asset('js/dashboard.js') }}"></script>
+    {% endblock %}
+
+   

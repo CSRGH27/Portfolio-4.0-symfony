@@ -1,35 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Log in!{% endblock %}
-{% block stylesheets %} 
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}"> 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:500" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-
-
-{% endblock %}
+{% block stylesheets %} {% endblock %}
 
 {% block body %}
 
 
-<div class="ctn">
+<div class="ctn-login">
 
-    <form method="post" class="form" autocomplete="false">
-        <img class="img-form" src="{{ asset('upload/1.png') }}" alt="">
-        <h2 class="title-form">LOG IN</h2>
+    <form method="post" class="form-login" autocomplete="false">
+        <img class="img-form-login" src="{{ asset('upload/1.png') }}" alt="">
+        <h2 class="title-form-login">LOG IN</h2>
         <div class="line-input">
             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" autocomplete="false" class="input-login mail-event" placeholder="Email" required>
-            <span class="progress"></span>
+            <span class="underline"></span>
         </div>
         <div class="line-input">
             <input type="password" name="password" id="inputPassword" class="input-login password-event"  placeholder="Password" required>
-            <span class="progress-2"></span>
+            <span class="underline-2"></span>
         </div>
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-        <div class="">
-            <input type="checkbox" name="_remember_me" class="input-check">
-            <label for="" class="label-check">Remember me</label>
-        </div>
+        
         <button class="btn-login" type="submit">
             Connexion
         </button>
@@ -37,7 +28,7 @@
 
 </div>
 
-<script src="{{ asset('js/custom.js') }}"></script>
+
 {% endblock %}
 
 

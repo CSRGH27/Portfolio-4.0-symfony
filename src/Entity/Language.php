@@ -29,7 +29,12 @@ class Language
     private $image;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Project", inversedBy="languages")
+     * @ORM\Column(type="integer")
+     */
+    private $level;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Project", mappedBy="languages")
      */
     private $projects;
 
@@ -67,6 +72,18 @@ class Language
         return $this;
     }
 
+    public function getLevel(): ?int
+    {
+        return $this->level;
+    }
+
+    public function setLevel(int $level): self
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Project[]
      */
@@ -79,6 +96,7 @@ class Language
     {
         if (!$this->projects->contains($project)) {
             $this->projects[] = $project;
+            $project->addLanguage($this);
         }
 
         return $this;
@@ -88,6 +106,7 @@ class Language
     {
         if ($this->projects->contains($project)) {
             $this->projects->removeElement($project);
+            $project->removeLanguage($this);
         }
 
         return $this;

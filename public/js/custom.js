@@ -16,11 +16,12 @@ $(document).on({
 $(document).ready(function () {
   $('.button').click(function() {
       var url = Routing.generate( 'project_show', {'id': $(this).attr('id')});
-      $.get(url, function (data) {
+      $.get(url, function (data) { console.log(data)
           $(".modal-content").html(data);
       });
   });
 });
+
 
 
   
@@ -32,16 +33,17 @@ function formLoginBar() {
   var eventPassword = document.querySelector('.password-event');
   if (eventMail) {
     eventMail.addEventListener("focus", function () {
-      document.styleSheets[0].addRule('span.progress:before', 'width: 100%');
+      document.styleSheets[0].addRule('span.underline:before', 'width: 100%');
     }, true);
     eventMail.addEventListener("blur", function () {
-      document.styleSheets[0].addRule('span.progress:before', 'width: 0%');
+      document.styleSheets[0].addRule('span.underline:before', 'width: 0%');
     }, true);
     eventPassword.addEventListener("focus", function () {
-      document.styleSheets[0].addRule('span.progress-2:before', 'width: 100%');
+      document.styleSheets[0].addRule('span.underline-2:before', 'width: 100%');
     }, true);
     eventPassword.addEventListener("blur", function () {
-      document.styleSheets[0].addRule('span.progress-2:before', 'width: 0%');
+      document.styleSheets[0].addRule('span.underline-2:before', 'width: 0%');
     }, true);
   }
 }
+

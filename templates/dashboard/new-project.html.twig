@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}New project{% endblock %}
+{% block stylesheets %}{% endblock %}
+
+
+{% block body %}
+<div class="grid-ctn">
+<div class="dash-top-bar">
+    <a href=" {{ path('project') }}">Aller sur mon site</a>
+    <p>Bonjour {{ app.user.name }}</p>
+</div>
+
+<div class="dash-left-bar">
+    <img class="dash-left-bar_img" src="{{ asset('upload/1.png') }}" alt="">
+    <a href="{{ path('list_project') }}" class="dash-left-bar_onglet"><i class="fas fa-laptop-code"></i><p>Projects</p></a>
+    <a href="" class="dash-left-bar_onglet"><i class="fas fa-building"></i><p>Experiencs Pro</p></a>
+    <a href="" class="dash-left-bar_onglet"><i class="fas fa-code"></i><p>Skills</p></a>
+    <a href="" class="dash-left-bar_onglet"><i class="fas fa-align-left"></i><p>About Me</p></a>
+</div>
+
+<div class="dash-tool">
+    <div class="form-project">
+        <h2 class="title-project">
+        
+            Ajout d'un projet
+        </h2>
+
+        {{ form_start(form) }}
+            <div class="form-project-in">
+                <div class="form-project-row">
+                    <div class="form-project-error">
+                        {{ form_errors(form.title) }}
+                    </div>
+                    <div class="form-project-widget">
+                        {{ form_widget(form.title, { 'attr' : {"placeholder" : "Titre"}}) }}
+                    </div>
+                </div>
+
+                <div class="form-project-row">
+                    <div class="form-project-error">
+                        {{ form_errors(form.content) }}
+                    </div>
+                    <div class="form-project-widget">
+                        {{ form_widget(form.content, { 'attr' : {"placeholder" : "Contenu"}}) }}
+                    </div>
+                </div>
+
+                <div class="form-project-row">
+                    <div class="form-project-error">
+                        {{ form_errors(form.imageFile) }}
+                    </div>
+                    <div class="form-project-widget">
+                        {{ form_widget(form.imageFile, { 'attr' : {"placeholder" : "image"}}) }}
+                    </div>
+                </div>
+
+                <div class="form-project-row">
+                    <div class="form-project-error">
+                        {{ form_errors(form.languages) }}
+                    </div>
+                    <div class="form-project-widget">
+                        {{ form_widget(form.languages) }}
+                    </div>
+                </div>
+
+                <div class="form-project-row">
+                    <button class="btn-form-project">
+                        
+                        
+                        Ajouter projet
+                        
+                    </button>
+                </div>
+            
+            </div>
+        {{ form_end(form) }}
+    </div>
+</div>
+
+
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

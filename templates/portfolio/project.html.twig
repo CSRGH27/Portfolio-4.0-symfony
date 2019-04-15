@@ -1,41 +1,29 @@
 {% extends 'base.html.twig' %}
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Lato:700" rel="stylesheet">
-{% endblock %}
-    {% block body %}
-        <div class="big-ctn">
-            <div class="ctn-project">
+{% block stylesheets %}{% endblock %}
+{% block body %}
+    <div class="big-ctn">
+        <div class="ctn-project">
             {% for project in projects %}
                 <div class="box">
-                    <img class="box-img" src="{{ project.image }}" alt="">
-                    <div class="middle">
-                        <div class="text">
-                            {{ project.title }}
+                    <img class="box-img" src="{{ vich_uploader_asset(project, 'imageFile') }}" alt="">
+                        <div class="middle">
+                            <div class="text">
+                                {{ project.title }}
+                            </div>
                         </div>
-                    </div>
-                     <a class="button" id="{{ project.id }}" data-toggle="modal" data-target="#Modal"   >LEARN MORE </a> 
+                    <a class="button" id="{{ project.id }}" data-toggle="modal" data-target="#Modal">LEARN MORE</a>
                 </div>
             {% endfor %}
+        </div>
+    </div>
+        <div class="loading" style="width=400px; height=400px; background=red;"></div>
+        <div aria-labelledby="exampleModalLabel" class="modal fade" id="Modal" role="dialog" tabindex="-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content"></div>
             </div>
         </div>
-<div style="width=400px; height=400px; background=red;" class="loading">
-</div>
-<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
-    <div class="modal-content">
-    
-    
-    </div>
-        
-    </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.1.1.min.js">
-        <script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <script src="{{ asset('js/custom.js') }}"></script>
-        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-    	<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 {% endblock %}
-        
+{% block javascripts %}
+             <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+{% endblock %}
