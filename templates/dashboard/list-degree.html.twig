@@ -1,21 +1,21 @@
 {% extends 'dashboard/base_dash.html.twig' %}
-{% block title %}List of projects{% endblock %}
+{% block title %}List of degrees{% endblock %}
 {% block stylesheets %}{% endblock %}
 {% block body %}
    <div class="dash-tool">
         <div class="ctn-dash-list-project">
-        {% for project in projects %}
+        {% for degree in degrees %}
             <div class="dash-list-project">
-                <div class="dash-list-project-title">{{ project.title }}</div>
+                <div class="dash-list-project-title">{{ degree.title }}</div>
                 <div class="ctn-list-project-icon">
-                    <a href="{{ path('edit_project', {'id': project.id}) }}" class="fas fa-edit dash-list-project-icon"></a>
-                    <a href="#" class="fas fa-trash-alt dash-list-project-icon delete" data-id="{{ project.id }}"></a>
+                    <a href="{{ path('edit_degree', {'id': degree.id}) }}" class="fas fa-edit dash-list-project-icon"></a>
+                    <a href="#" class="fas fa-trash-alt dash-list-project-icon delete" data-id="{{ degree.id }}"></a>
                 </div>
             </div>
         {% endfor %}
         </div>
         <div class="add-project">
-            <a class="fas fa-plus" href="{{ path('create_project') }}"></a>
+            <a class="fas fa-plus" href="{{ path('create_degree') }}"></a>
         </div>
     </div>
 
@@ -24,5 +24,3 @@
     {% block javascripts %}
         <script src="{{ asset('js/dashboard.js') }}"></script>
     {% endblock %}
-
-   

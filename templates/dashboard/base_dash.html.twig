@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>
+            {% block title %}Mon Dashboard{% endblock %}
+        </title>
+        <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/cssDashboard/dashboard.css') }}"> 
+        <link rel="stylesheet" href="{{ asset('css/cssPortfolio/portfolio.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Lato:700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:800" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <div class="grid-ctn">
+        <div class="dash-top-bar">
+            <a href=" {{ path('project') }}">Aller sur mon site</a>
+            <p>Bonjour {{ app.user.name }}</p>
+        </div>
+        <div class="dash-left-bar">
+            <img class="dash-left-bar_img" src="{{ asset('upload/1.png') }}" alt="">
+            <a href="{{ path('list_project') }}" class="dash-left-bar_onglet"><i class="fas fa-laptop-code"></i><p>Projects</p></a>
+            <a href="{{ path('list_degree') }}" class="dash-left-bar_onglet"><i class="fas fa-graduation-cap"></i><p>Degrees</p></a>
+            <a href="" class="dash-left-bar_onglet"><i class="fas fa-code"></i><p>Skills</p></a>
+            <a href="" class="dash-left-bar_onglet"><i class="fas fa-align-left"></i><p>About Me</p></a>
+        </div>
+        {% block body %}
+        
+        {% endblock %}
+        </div>
+    
+        
+        {% block javascripts %}{% endblock %}
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="{{ asset('js/custom.js') }}"></script>
+    </body>
+</html>
+

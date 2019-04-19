@@ -10,11 +10,17 @@ use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Project;
 use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
+use App\Entity\Degree;
+use App\Form\DegreeType;
+use App\Repository\DegreeRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+
+
+
 
 
 
@@ -27,7 +33,7 @@ class DashboardController extends AbstractController
     public function index()
     {
         $user = $this->getUser();
-        return $this->render('dashboard/index.html.twig', [
+        return $this->render('dashboard/base_dash.html.twig', [
             'controller_name' => 'DashboardController',
             'user' => $user
         ]);
@@ -106,5 +112,64 @@ class DashboardController extends AbstractController
 
 
     }
+
+    /**
+     * @Route("/dashboard/list-degree", name="list_degree")
+     */
+    public function listDegree(DegreeRepository $repo){
+        $degree = $repo->findAll();
+        return $this->render('dashboard/list-degree.html.twig', [
+            'controller_name' => 'DashboardController',
+            'degrees' => $degree,
+        ]);
+    }
+
+    /**
+     * @Route("/dashboard/new-degree", name="create_degree")
+     */
+    public function createDegree(Request $request, ObjectManager $manager){
+        $degree = new Degree();
+            
+        $form = $this->createForm(DegreeType::class, $degree);
+        $form->handleRequest($request);
+           
+        if ($form->isSubmitted() && $form->isValid()){
+            
+           $manager->persist($degree);
+           $manager->flush();
+           return $this->redirectToRoute('list_degree');
+            
+        }   
+        return $this->render('dashboard/new-degree.html.twig',[
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/dashboard/edit-degree/{id}", name="edit_degree")
+     */
+    public function editDegree(Request $request, ObjectManager $manager, $id){
+        $degree = new Degree();
+        $degree = $this->getDoctrine()->getRepository
+        (Degree::class)->find($id);
+            
+        $form = $this->createForm(DegreeType::class, $degree);
+        $form->handleRequest($request);
+           
+        if ($form->isSubmitted() && $form->isValid()){
+            
+           $manager = $this->getDoctrine()->getManager();
+           $manager->persist($degree);
+           $manager->flush();
+           return $this->redirectToRoute('list_degree');
+            
+        }   
+        return $this->render('dashboard/edit-degree.html.twig',[
+            'form' => $form->createView(),
+            'degree' =>$degree,
+        ]);
+    }
+
+    
 
 }

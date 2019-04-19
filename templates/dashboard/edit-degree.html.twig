@@ -1,7 +1,7 @@
 {% extends 'dashboard/base_dash.html.twig' %}
 
 
-{% block title %}New project{% endblock %}
+{% block title %}Degree{% endblock %}
 {% block stylesheets %}{% endblock %}
 
 
@@ -12,7 +12,7 @@
     <div class="form-project">
         <h2 class="title-project">
         
-            Ajout d'un projet
+            Edit a degree
         </h2>
 
         {{ form_start(form) }}
@@ -22,16 +22,43 @@
                         {{ form_errors(form.title) }}
                     </div>
                     <div class="form-project-widget">
-                        {{ form_widget(form.title, { 'attr' : {"placeholder" : "Titre"}}) }}
+                        {{ form_widget(form.title, { 'attr' : {"placeholder" : "Title of the degree"}}) }}
                     </div>
                 </div>
 
                 <div class="form-project-row">
                     <div class="form-project-error">
-                        {{ form_errors(form.content) }}
+                        {{ form_errors(form.location) }}
                     </div>
                     <div class="form-project-widget">
-                        {{ form_widget(form.content, { 'attr' : {"placeholder" : "Contenu"}}) }}
+                        {{ form_widget(form.location, { 'attr' : {"placeholder" : "Location of the degree"}}) }}
+                    </div>
+                </div>
+
+                <div class="form-project-row">
+                    <div class="form-project-error">
+                        {{ form_errors(form.date) }}
+                    </div>
+                    <div class="form-project-widget">
+                        {{ form_widget(form.date, { 'attr' : {"placeholder" : "Date of the degree"}}) }}
+                    </div>
+                </div>
+
+                <div class="form-project-row">
+                    <div class="form-project-error">
+                        {{ form_errors(form.year) }}
+                    </div>
+                    <div class="form-project-widget">
+                        {{ form_widget(form.year, { 'attr' : {"placeholder" : "Year of the degree"}}) }}
+                    </div>
+                </div>
+
+                <div class="form-project-row">
+                    <div class="form-project-error">
+                        {{ form_errors(form.description) }}
+                    </div>
+                    <div class="form-project-widget">
+                        {{ form_widget(form.description, { 'attr' : {"placeholder" : "Description of the degree"}}) }}
                     </div>
                 </div>
 
@@ -39,17 +66,9 @@
                     <div class="form-project-error">
                         {{ form_errors(form.imageFile) }}
                     </div>
-                    <div class="form-project-widget">
+                    <div class="form-project-widget ctn-upload">
                         {{ form_widget(form.imageFile, { 'attr' : {"placeholder" : "image"}}) }}
-                    </div>
-                </div>
-
-                <div class="form-project-row">
-                    <div class="form-project-error">
-                        {{ form_errors(form.languages) }}
-                    </div>
-                    <div class="form-project-widget">
-                        {{ form_widget(form.languages) }}
+                        <img class="upload-img" src="{{ vich_uploader_asset(degree, 'imageFile') }}" alt="" />
                     </div>
                 </div>
 
@@ -57,7 +76,7 @@
                     <button class="btn-form-project">
                         
                         
-                        Ajouter projet
+                        Add degree
                         
                     </button>
                 </div>

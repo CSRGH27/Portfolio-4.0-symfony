@@ -8,3 +8,9 @@ vich_uploader:
             inject_on_load: false
             delete_on_update: true
             delete_on_remove: true
+        degrees:
+            uri_prefix: /images/degrees
+            upload_destination: '%kernel.project_dir%/public/images/degrees'
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
