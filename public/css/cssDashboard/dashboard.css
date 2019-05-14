@@ -232,11 +232,37 @@ input:-webkit-autofill {
     background: -webkit-linear-gradient(top,#565BFD,#12145C );
     padding: 45px 70px 30px 70px;
 }
+.form-skill{
+    width: 700px;
+    height: 500px;
+    border-radius: 10px;
+    background: -webkit-linear-gradient(top,#565BFD,#12145C );
+    padding: 45px 70px 30px 70px;
+}
+.form-edit-skill{
+    width: 700px;
+    height: 530px;
+    border-radius: 10px;
+    background: -webkit-linear-gradient(top,#565BFD,#12145C );
+    padding: 45px 70px 30px 70px;
+}
 .title-project{
     color: #fff;
 }
 .form-project-in{
     height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.form-skill-in{
+    height: 370px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.form-edit-skill-in{
+    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -320,7 +346,17 @@ input:-webkit-autofill {
     padding: 40px;
     background: -webkit-linear-gradient(left,#565BFD,#12145C );
 }
+.dash-list-project-ctn{
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+}
 .dash-list-project-title{
+    align-self: center;
+    color:#fff;
+    font-size: 1.2rem;
+}
+.dash-list-skill-level{
     align-self: center;
     color:#fff;
     font-size: 1.2rem;

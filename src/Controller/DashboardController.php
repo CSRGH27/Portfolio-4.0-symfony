@@ -13,16 +13,19 @@ use App\Repository\ProjectRepository;
 use App\Entity\Degree;
 use App\Form\DegreeType;
 use App\Repository\DegreeRepository;
+
+use App\Entity\Work;
+use App\Form\WorkType;
+use App\Repository\WorkRepository;
+
+use App\Entity\Language;
+use App\Form\SkillType;
+use App\Repository\LanguageRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-
-
-
-
-
 
 
 class DashboardController extends AbstractController
@@ -169,6 +172,121 @@ class DashboardController extends AbstractController
             'degree' =>$degree,
         ]);
     }
+    /**
+     * @Route("/dashboard/list-work", name="list_work")
+     */
+    public function listWork(WorkRepository $repo){
+        $work = $repo->findAll();
+        return $this->render('dashboard/list-work.html.twig', [
+            'controller_name' => 'DashboardController',
+            'works' => $work,
+        ]);
+    }
+
+    /**
+     * @Route("/dashboard/new-work", name="create_work")
+     */
+    public function createWork(Request $request, ObjectManager $manager){
+        $work = new Work();
+            
+        $form = $this->createForm(WorkType::class, $work);
+        $form->handleRequest($request);
+           
+        if ($form->isSubmitted() && $form->isValid()){
+            
+           $manager->persist($work);
+           $manager->flush();
+           return $this->redirectToRoute('list_work');
+            
+        }   
+        return $this->render('dashboard/new-work.html.twig',[
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/dashboard/edit-work/{id}", name="edit_work")
+     */
+    public function editWork(Request $request, ObjectManager $manager, $id){
+        $work = new Work();
+        $work = $this->getDoctrine()->getRepository
+        (Work::class)->find($id);
+            
+        $form = $this->createForm(WorkType::class, $work);
+        $form->handleRequest($request);
+           
+        if ($form->isSubmitted() && $form->isValid()){
+            
+           $manager = $this->getDoctrine()->getManager();
+           $manager->persist($work);
+           $manager->flush();
+           return $this->redirectToRoute('list_work');
+            
+        }   
+        return $this->render('dashboard/edit-work.html.twig',[
+            'form' => $form->createView(),
+            'work' =>$work,
+        ]);
+    }
+
+    /**
+     * @Route("/dashboard/list-skill", name="list_skill")
+     */
+    public function listSkill(LanguageRepository $repo){
+        $skill = $repo->findAll();
+        return $this->render('dashboard/list-skill.html.twig', [
+            'controller_name' => 'DashboardController',
+            'skills' => $skill,
+        ]);
+    }
+
+     /**
+     * @Route("/dashboard/new-skill", name="create_skill")
+     */
+    public function createSkill(Request $request, ObjectManager $manager){
+        $skill = new Language();
+            
+        $form = $this->createForm(SkillType::class, $skill);
+        $form->handleRequest($request);
+           
+        if ($form->isSubmitted() && $form->isValid()){
+            
+           $manager->persist($skill);
+           $manager->flush();
+           return $this->redirectToRoute('list_skill');
+            
+        }   
+        return $this->render('dashboard/new-skill.html.twig',[
+            'form' => $form->createView()
+        ]);
+    }
+
+     /**
+     * @Route("/dashboard/edit-skill/{id}", name="edit_skill")
+     */
+    public function editSkill(Request $request, ObjectManager $manager, $id){
+        $skill = new Language();
+        $skill = $this->getDoctrine()->getRepository
+        (Language::class)->find($id);
+            
+        $form = $this->createForm(SkillType::class, $skill);
+        $form->handleRequest($request);
+           
+        if ($form->isSubmitted() && $form->isValid()){
+            
+           $manager = $this->getDoctrine()->getManager();
+           $manager->persist($skill);
+           $manager->flush();
+           return $this->redirectToRoute('list_skill');
+            
+        }   
+        return $this->render('dashboard/edit-skill.html.twig',[
+            'form' => $form->createView(),
+            'skill' =>$skill,
+        ]);
+    }
+
+    
 
     
 

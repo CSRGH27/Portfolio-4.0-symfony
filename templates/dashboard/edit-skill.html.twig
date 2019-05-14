@@ -2,36 +2,36 @@
 {% extends 'dashboard/base_dash.html.twig' %}
 
 
-{% block stylesheets %}{% endblock %}
+{% block stylesheets %}a{% endblock %}
 
 
 {% block body %}
 
 
 <div class="dash-tool">
-    <div class="form-project">
+    <div class="form-edit-skill">
         <h2 class="title-project">
         
-            Edit a project
+            Edit a skill
         </h2>
 
         {{ form_start(form) }}
-            <div class="form-project-in">
+            <div class="form-edit-skill-in">
                 <div class="form-project-row">
                     <div class="form-project-error">
                         {{ form_errors(form.title) }}
                     </div>
                     <div class="form-project-widget">
-                        {{ form_widget(form.title, { 'attr' : {"placeholder" : "Titre"}}) }}
+                        {{ form_widget(form.title, { 'attr' : {"placeholder" : "Name of the skill"}}) }}
                     </div>
                 </div>
 
                 <div class="form-project-row">
                     <div class="form-project-error">
-                        {{ form_errors(form.content) }}
+                        {{ form_errors(form.level) }}
                     </div>
                     <div class="form-project-widget">
-                        {{ form_widget(form.content, { 'attr' : {"placeholder" : "Contenu"}}) }}
+                        {{ form_widget(form.level, { 'attr' : {"placeholder" : "Level of the skill"}}) }}
                     </div>
                 </div>
 
@@ -41,16 +41,7 @@
                     </div>
                     <div class="form-project-widget ctn-upload">
                         {{ form_widget(form.imageFile, { 'attr' : {"placeholder" : "image"}}) }}
-                        <img class="upload-img" src="{{ vich_uploader_asset(project, 'imageFile') }}" alt="" />
-                    </div>
-                </div>
-
-                <div class="form-project-row">
-                    <div class="form-project-error">
-                        {{ form_errors(form.languages) }}
-                    </div>
-                    <div class="form-project-widget">
-                        {{ form_widget(form.languages) }}
+                        <img class="upload-img" src="{{ vich_uploader_asset(skill, 'imageFile') }}" alt="" />
                     </div>
                 </div>
 
@@ -58,7 +49,7 @@
                     <button class="btn-form-project">
                         
                         
-                        Modifier projet
+                        Edit Skill
                         
                     </button>
                 </div>

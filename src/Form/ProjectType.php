@@ -25,17 +25,12 @@ class ProjectType extends AbstractType
             ->add('content')
             ->add('imageFile', VichFileType::class,[
                 'required' => false,
-                
-                
-                
-                
-
             ])
             ->add('languages', EntityType::class,[
                 'class' => Language::class,
                 'choice_label' => 'title',
                 'multiple' => true,
-                'expanded' => true,
+                'expanded' => false,
                 
             ])
         ;

@@ -1,5 +1,7 @@
 {% extends 'dashboard/base_dash.html.twig' %}
 
+
+
 {% block stylesheets %}{% endblock %}
 
 
@@ -10,7 +12,7 @@
     <div class="form-project">
         <h2 class="title-project">
         
-            Edit a degree
+            Add a work
         </h2>
 
         {{ form_start(form) }}
@@ -20,16 +22,25 @@
                         {{ form_errors(form.title) }}
                     </div>
                     <div class="form-project-widget">
-                        {{ form_widget(form.title, { 'attr' : {"placeholder" : "Title of the degree"}}) }}
+                        {{ form_widget(form.title, { 'attr' : {"placeholder" : "Title of the post"}}) }}
                     </div>
                 </div>
 
                 <div class="form-project-row">
                     <div class="form-project-error">
-                        {{ form_errors(form.location) }}
+                        {{ form_errors(form.company) }}
                     </div>
                     <div class="form-project-widget">
-                        {{ form_widget(form.location, { 'attr' : {"placeholder" : "Location of the degree"}}) }}
+                        {{ form_widget(form.company, { 'attr' : {"placeholder" : "Company"}}) }}
+                    </div>
+                </div>
+
+                <div class="form-project-row">
+                    <div class="form-project-error">
+                        {{ form_errors(form.city) }}
+                    </div>
+                    <div class="form-project-widget">
+                        {{ form_widget(form.city, { 'attr' : {"placeholder" : "City"}}) }}
                     </div>
                 </div>
 
@@ -38,7 +49,7 @@
                         {{ form_errors(form.date) }}
                     </div>
                     <div class="form-project-widget">
-                        {{ form_widget(form.date, { 'attr' : {"placeholder" : "Date of the degree"}}) }}
+                        {{ form_widget(form.date, { 'attr' : {"placeholder" : "Date of the work"}}) }}
                     </div>
                 </div>
 
@@ -47,7 +58,7 @@
                         {{ form_errors(form.year) }}
                     </div>
                     <div class="form-project-widget">
-                        {{ form_widget(form.year, { 'attr' : {"placeholder" : "Year of the degree"}}) }}
+                        {{ form_widget(form.year, { 'attr' : {"placeholder" : "Year of the work"}}) }}
                     </div>
                 </div>
 
@@ -56,7 +67,7 @@
                         {{ form_errors(form.description) }}
                     </div>
                     <div class="form-project-widget">
-                        {{ form_widget(form.description, { 'attr' : {"placeholder" : "Description of the degree"}}) }}
+                        {{ form_widget(form.description, { 'attr' : {"placeholder" : "Description of the work"}}) }}
                     </div>
                 </div>
 
@@ -64,9 +75,8 @@
                     <div class="form-project-error">
                         {{ form_errors(form.imageFile) }}
                     </div>
-                    <div class="form-project-widget ctn-upload">
+                    <div class="form-project-widget">
                         {{ form_widget(form.imageFile, { 'attr' : {"placeholder" : "image"}}) }}
-                        <img class="upload-img" src="{{ vich_uploader_asset(degree, 'imageFile') }}" alt="" />
                     </div>
                 </div>
 
@@ -74,7 +84,7 @@
                     <button class="btn-form-project">
                         
                         
-                        Add degree
+                        Add work
                         
                     </button>
                 </div>

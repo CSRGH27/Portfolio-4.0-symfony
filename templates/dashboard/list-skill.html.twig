@@ -1,0 +1,29 @@
+{% extends 'dashboard/base_dash.html.twig' %}
+{% block title %}List of skill{% endblock %}
+{% block stylesheets %}{% endblock %}
+{% block body %}
+   <div class="dash-tool">
+        <div class="ctn-dash-list-project">
+        {% for skill in skills %}
+            <div class="dash-list-project">
+                <div class="dash-list-project-ctn">
+                    <div class="dash-list-project-title">{{ skill.title }}</div>
+                    <div class="dash-list-skill-level">{{ skill.level }} %</div>
+                </div>
+                <div class="ctn-list-project-icon">
+                    <a href="{{ path('edit_skill', {'id': skill.id}) }}" class="fas fa-edit dash-list-project-icon"></a>
+                    <a href="#" class="fas fa-trash-alt dash-list-project-icon delete" data-id="{{ skill.id }}"></a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="add-project">
+            <a class="fas fa-plus" href="{{ path('create_skill') }}"></a>
+        </div>
+    </div>
+
+    {% endblock %}
+
+    {% block javascripts %}
+        <script src="{{ asset('js/dashboard.js') }}"></script>
+    {% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'dashboard/base_dash.html.twig' %}
+{% block title %}List of projects{% endblock %}
+{% block stylesheets %}{% endblock %}
+{% block body %}
+   <div class="dash-tool">
+        <div class="ctn-dash-list-project">
+        {% for work in works %}
+            <div class="dash-list-project">
+                <div class="dash-list-project-title">{{ work.title }}</div>
+                <div class="ctn-list-project-icon">
+                    <a href="{{ path('edit_project', {'id': work.id}) }}" class="fas fa-edit dash-list-project-icon"></a>
+                    <a href="#" class="fas fa-trash-alt dash-list-project-icon delete" data-id="{{ work.id }}"></a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="add-project">
+            <a class="fas fa-plus" href="{{ path('create_work') }}"></a>
+        </div>
+    </div>
+
+    {% endblock %}
+
+    {% block javascripts %}
+        <script src="{{ asset('js/dashboard.js') }}"></script>
+    {% endblock %}
+
+   
